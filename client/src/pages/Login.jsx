@@ -4,7 +4,6 @@ import { styled } from 'styled-components';
 import { theme } from '../theme';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-
 import { login } from '../assets';
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -49,7 +48,9 @@ const Login = () => {
               required
             />
           </div>
-          <SubmitButton type="submit">Se connecter</SubmitButton>
+          <SubmitButton type="submit" className="btn-primary">
+            Se connecter
+          </SubmitButton>
           <p>
             Vous n'êtes pas membre ? <Link to="/register">S'inscrire</Link>
           </p>
@@ -97,8 +98,8 @@ const FormContainer = styled.main`
       input {
         width: 100%;
         padding: 0.5rem;
-        border: none;
         border-radius: 5px;
+        border: 1px solid ${({ theme }) => theme.border};
       }
     }
   }
@@ -108,17 +109,14 @@ const SubmitButton = styled.button`
   width: 100%;
   padding: 0.5rem;
   margin-bottom: 1rem;
-  background-color: ${theme.colors.primary3};
-  color: black;
-  border: none;
   border-radius: 5px;
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s;
 
   &:hover {
-    background-color: #333;
-    color: #fff;
+    background: ${theme.colors.primary3};
+    color: ${theme.colors.grey10};
   }
 `;
 

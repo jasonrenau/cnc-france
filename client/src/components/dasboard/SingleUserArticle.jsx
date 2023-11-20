@@ -40,7 +40,7 @@ const SingleUserArticle = ({ articles }) => {
             transition={{ delay: 0.2, duration: 0.3 }}
           >
             <Tilt options={defaultOptions}>
-              <div className="card">
+              <div className="card article-card">
                 <div className="card-header">
                   <div className="image">
                     {image ? (
@@ -93,8 +93,6 @@ const Article = styled.article`
     width: 20rem;
     border-radius: 0.5rem;
     height: 100%;
-    background: ${theme.colors.grey8};
-    border: 1px solid ${theme.colors.grey6};
     box-shadow: rgba(123, 123, 123, 0.25) 0px 2px 8px 2px;
 
     .card-header {
@@ -116,11 +114,9 @@ const Article = styled.article`
         margin-left: 0.5rem;
         padding: 0.15rem 0.5rem;
         border-radius: 2rem;
-        color: ${theme.colors.primary10};
         font-size: 0.7rem;
         letter-spacing: ${theme.letterSpacing.xs};
         text-transform: uppercase;
-        background: ${theme.colors.primary2};
       }
     }
 
@@ -130,12 +126,10 @@ const Article = styled.article`
       h3 {
         font-size: 1rem;
         margin-bottom: 0.5rem;
-        color: #e0e6eb;
       }
       .article-message {
         p {
           font-size: 0.8rem;
-          color: #e0e6eb;
         }
       }
     }
@@ -143,20 +137,17 @@ const Article = styled.article`
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       align-items: center;
-      border-top: 1px solid ${theme.colors.grey2};
+      border-top: 1px solid ${({ theme }) => theme.cardBorderSecondary};
       padding: 0.5rem;
-      .numero {
-        color: #e0e6eb;
-      }
       .options {
         display: flex;
         justify-content: space-around;
 
         .edit {
-          color: ${theme.colors.primary4};
+          color: ${theme.colors.primary7};
         }
         .delete {
-          color: #e21d1d;
+          color: #ab4650;
         }
 
         .edit,
@@ -171,7 +162,7 @@ const Article = styled.article`
         }
 
         .edit:hover {
-          color: ${theme.colors.primary4};
+          color: ${theme.colors.primary5};
           scale: 1.1;
         }
 

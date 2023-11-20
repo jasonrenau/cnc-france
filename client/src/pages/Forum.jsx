@@ -8,7 +8,6 @@ export const loader = async ({ request }) => {
   const params = Object.fromEntries([
     ...new URL(request.url).searchParams.entries(),
   ]);
-
   try {
     const { data } = await axios(`/api/v1/articles/all/`, { params });
     const {

@@ -44,7 +44,7 @@ const SingleArticle = ({ article }) => {
       animate="visible"
     >
       <Tilt options={defaultOptions}>
-        <Card className="card">
+        <Card className="article-card">
           <div className="card-header">
             <div className="image">
               {image ? (
@@ -90,8 +90,6 @@ const Card = styled.div`
   width: 20rem;
   border-radius: 0.5rem;
   height: 100%;
-  background: ${theme.colors.grey8};
-  border: 1px solid ${theme.colors.grey6};
   box-shadow: rgba(123, 123, 123, 0.25) 0px 2px 8px 2px;
 
   .card-header {
@@ -113,11 +111,9 @@ const Card = styled.div`
       margin-left: 0.5rem;
       padding: 0.15rem 0.5rem;
       border-radius: 2rem;
-      color: ${theme.colors.primary10};
       font-size: 0.7rem;
       letter-spacing: ${theme.letterSpacing.xs};
       text-transform: uppercase;
-      background: ${theme.colors.primary2};
     }
   }
   .card-content {
@@ -126,12 +122,10 @@ const Card = styled.div`
     h3 {
       font-size: 1rem;
       margin-bottom: 0.5rem;
-      color: #e0e6eb;
     }
     .article-message {
       p {
         font-size: 0.8rem;
-        color: #e0e6eb;
       }
     }
   }
@@ -139,7 +133,7 @@ const Card = styled.div`
     display: grid;
     grid-template-columns: 1fr auto;
     align-items: center;
-    border-top: 1px solid ${theme.colors.grey6};
+    border-top: 1px solid ${({ theme }) => theme.cardBorderSecondary};
 
     .user {
       .pseudo {
@@ -147,9 +141,8 @@ const Card = styled.div`
         gap: 1rem;
         padding: 0.5rem;
         align-items: center;
-        border-right: 1px solid ${theme.colors.grey6};
+        border-right: 1px solid ${({ theme }) => theme.cardBorderSecondary};
         svg {
-          color: #e0e6eb;
           font-size: 2rem;
         }
       }
@@ -161,12 +154,10 @@ const Card = styled.div`
         p {
           font-size: 1rem;
           text-transform: capitalize;
-          color: #e0e6eb;
         }
 
         cite {
           font-size: 0.8rem;
-          color: #e0e6eb;
         }
       }
     }
@@ -176,7 +167,6 @@ const Card = styled.div`
         display: flex;
         align-items: center;
         font-size: 0.8rem;
-        color: #e0e6eb;
         gap: 0.2rem;
         text-decoration: none;
         &:hover {

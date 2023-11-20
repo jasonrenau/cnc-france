@@ -18,7 +18,7 @@ const HomeHero = () => {
               et vos réalisations.
             </p>
             <Link to="/forum">
-              <button>Découvrez le forum</button>
+              <button className="btn-secondary">Découvrez le forum</button>
             </Link>
           </div>
           <div className="content-img">
@@ -74,12 +74,9 @@ const HeroContainer = styled.section`
 
         button {
           width: 100%;
-          background: ${theme.colors.secondary7};
-          border: none;
           padding: 0.5rem 1rem;
           font-size: 1.2rem;
           border-radius: 8px;
-          color: ${theme.colors.grey1};
           transition: all 0.3s ease-in-out;
           &:hover {
             background: ${theme.colors.secondary3};

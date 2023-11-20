@@ -43,14 +43,15 @@ const CommentsForm = ({ setIsPosted }) => {
         <textarea
           name="message"
           id="message"
-          rows="5"
           placeholder="Écrire un commentaire"
           disabled={isSubmitting}
+          required
         ></textarea>
         <SubmitButton
           type="submit"
           name="intent"
           value="post"
+          className="btn-primary"
           disabled={isSubmitting}
         >
           {isSubmitting ? 'Ajout...' : 'Ajouter'}
@@ -64,27 +65,33 @@ const FormContainer = styled(Form)`
   margin-top: 3rem;
   max-width: 400px;
   margin-inline: auto;
-  border-radius: 8px;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   padding: 0.5rem;
 
   textarea {
-    padding: 0.25rem;
+    border: 1px solid ${({ theme }) => theme.border};
+    background: ${({ theme }) => theme.background};
+    color: ${({ theme }) => theme.text};
+    padding-inline: 1rem;
+    min-width: 100%;
+    padding-block: 0.5rem;
     border-radius: 4px;
-    font-size: 1rem;
+    font-size: 0.7rem;
+    &::placeholder {
+      color: ${({ theme }) => theme.text};
+    }
   }
 
   .title {
-    font-weight: bold;
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
+    text-align: left !important;
+    font-size: 0.8rem;
   }
 `;
 
 const FormControl = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  align-items: flex-start;
+  gap: 0.5rem;
 `;
 
 const InputLabel = styled.label`
@@ -92,18 +99,15 @@ const InputLabel = styled.label`
 `;
 
 const SubmitButton = styled.button`
-  background-color: ${theme.colors.primary3};
-  color: black;
-  border: none;
   border-radius: 4px;
-  padding: 0.5rem 1rem;
+  padding: 0.25rem 1rem;
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s;
 
   &:hover {
-    background-color: #333;
-    color: #fff;
+    background: ${theme.colors.primary3};
+    color: ${theme.colors.grey10};
   }
 `;
 

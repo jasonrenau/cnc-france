@@ -84,6 +84,7 @@ const ArticleWrapper = styled.main`
       max-width: ${theme.width.maxWidth};
       margin-top: 1rem;
       margin-bottom: 5rem;
+
       .title {
         text-align: center;
         h1 {
@@ -105,16 +106,15 @@ const ArticleWrapper = styled.main`
 
         .article-message {
           font-size: 1rem;
-          border: 1px solid ${theme.colors.grey3};
           padding: 1rem;
-          margin-block: 1rem;
+          margin-block: 2rem;
           border-radius: 0.5rem;
-          text-align: left;
+          text-align: center;
         }
 
         img {
           width: 100%;
-          max-width: 600px;
+          max-width: ${theme.width.maxFormWidth};
           aspect-ratio: 16/9;
           object-fit: cover;
           border-radius: 0.5rem;

@@ -1,7 +1,5 @@
 require('express-async-errors');
-// pour configurer les variables d'environnement
 require('dotenv').config();
-// appel de express
 const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
@@ -37,11 +35,12 @@ app.use(
     },
   })
 );
-// autorise les requêtes provenant d'autres domaines
+
 app.use(cors());
 // mon application va utiliser le format json
 app.use(express.json());
 app.use(fileUpload({ useTempFiles: true }));
+// sert a appellé les fichiers statics (images, css, js)
 app.use(express.static(path.resolve(__dirname, './client/dist')));
 
 // routes

@@ -11,8 +11,10 @@ let imageValue;
 // eslint-disable-next-line react-refresh/only-export-components
 export const action = async ({ request }) => {
   const formData = await request.formData();
+  console.log(formData);
   const token = localStorage.getItem('token');
   const data = Object.fromEntries(formData);
+  console.log(data);
   data.image = imageValue;
 
   try {
@@ -90,7 +92,12 @@ const AddArticles = () => {
           <label htmlFor="message"></label>
           <JoditEditor name="message" required config={config} />
         </div>
-        <div className="form-row-image">
+        {imageValue && (
+          <div className="image">
+            <img src={imageValue} alt="image" />
+          </div>
+        )}
+        <div className="form-row-image ">
           <label htmlFor="image" className="form-label">
             <h2>Ajouter une image</h2>
           </label>
@@ -102,7 +109,11 @@ const AddArticles = () => {
             onChange={handleChange}
           />
         </div>
-        <SubmitButton type="submit" disabled={isSubmitting || isUpload}>
+        <SubmitButton
+          type="button"
+          className="btn-primary"
+          disabled={isSubmitting || isUpload}
+        >
           Poster
         </SubmitButton>
       </StyledForm>
@@ -125,8 +136,6 @@ const StyledForm = styled(Form)`
   margin-inline: auto;
   max-width: ${theme.width.maxWidth};
   padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 
   h2 {
     text-align: center;
@@ -135,8 +144,13 @@ const StyledForm = styled(Form)`
     display: flex;
     flex-direction: column;
     margin-bottom: 1rem;
-    p {
-      color: black;
+  }
+  .image {
+    text-align: center;
+    img {
+      width: 80vw;
+      max-width: 600px;
+      height: auto;
     }
   }
   .form-row-image {
@@ -154,8 +168,6 @@ const StyledForm = styled(Form)`
 `;
 
 const SubmitButton = styled.button`
-  background-color: ${theme.colors.primary3};
-  color: black;
   border: none;
   border-radius: 4px;
   padding: 0.5rem 1rem;
@@ -163,8 +175,8 @@ const SubmitButton = styled.button`
   cursor: pointer;
   transition: all 0.3s;
   &:hover {
-    background-color: #333;
-    color: #fff;
+    background: ${theme.colors.primary3};
+    color: ${theme.colors.grey10};
   }
 
   &:disabled {

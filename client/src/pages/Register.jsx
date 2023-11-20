@@ -64,7 +64,9 @@ const Register = () => {
               required
             />
           </div>
-          <SubmitButton type="submit">S'inscrire</SubmitButton>
+          <SubmitButton type="submit" className="btn-primary">
+            S'inscrire
+          </SubmitButton>
           <p>
             Vous avez déjà un compte ? <Link to="/login">Se connecter</Link>
           </p>
@@ -105,17 +107,15 @@ const FormContainer = styled.main`
 
       label {
         display: block;
-        font-size: 1.2rem;
-        color: ${theme.colors.grey10};
+        font-size: 1rem;
         margin-bottom: 0.25rem;
       }
 
       input {
         width: 100%;
         padding: 0.5rem;
-        border: none;
         border-radius: 5px;
-        background-color: #f4f4f4;
+        border: 1px solid ${({ theme }) => theme.border};
       }
     }
   }
@@ -125,17 +125,14 @@ const SubmitButton = styled.button`
   width: 100%;
   padding: 0.5rem;
   margin-bottom: 1rem;
-  background-color: ${theme.colors.primary3};
-  color: black;
-  border: none;
   border-radius: 5px;
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s;
 
   &:hover {
-    background-color: #333;
-    color: #fff;
+    background: ${theme.colors.primary3};
+    color: ${theme.colors.grey10};
   }
 `;
 

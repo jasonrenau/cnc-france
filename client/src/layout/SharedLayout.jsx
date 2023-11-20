@@ -1,4 +1,4 @@
-import { Outlet, useLoaderData } from 'react-router-dom';
+import { Outlet, useLoaderData, useNavigation } from 'react-router-dom';
 import MobileNavbar from '../components/navbar/MobileNavbar';
 import DesktopNavbar from '../components/navbar/DesktopNavbar';
 import { ThemeProvider, styled } from 'styled-components';
@@ -6,7 +6,6 @@ import { lightTheme, darkTheme, GlobalStyles } from '../theme/globalStyles';
 import { theme } from '../theme';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useNavigation } from 'react-router-dom';
 import Loader from '../components/Loader';
 
 // eslint-disable-next-line react-refresh/only-export-components

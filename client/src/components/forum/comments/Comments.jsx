@@ -2,7 +2,6 @@ import { useState } from 'react';
 import CommentsForm from './CommentsForm';
 import { styled } from 'styled-components';
 import { Form, useOutletContext } from 'react-router-dom';
-import { theme } from '../../../theme';
 import { BiSolidUserCircle } from 'react-icons/bi';
 import { FcCancel } from 'react-icons/fc';
 import Pagination from '../../Pagination';
@@ -23,7 +22,8 @@ const Comments = ({ numberOfPages, currentPage, comments }) => {
             day: 'numeric',
             month: 'numeric',
           }).format(timeServer);
-          const isUserComment = comment.user_id === user?.user_id;
+          const isUserComment =
+            comment.user_id === user?.user_id || user?.role === 'admin';
           return (
             <div key={index} className="comment">
               <div className="comment-photo">
@@ -50,22 +50,14 @@ const Comments = ({ numberOfPages, currentPage, comments }) => {
           );
         })}
         <Pagination numberOfPages={numberOfPages} currentPage={currentPage} />
-        {user && (
-          <div className="add-comment">
-            <CommentsForm setIsPosted={setIsPosted} />
-          </div>
-        )}
+        {user && <CommentsForm setIsPosted={setIsPosted} />}
       </CommentWrapper>
     );
   } else {
     return (
       <CommentWrapper>
         <p>Pas de commentaire pour le moment.</p>
-        {user && (
-          <div className="add-comment">
-            <CommentsForm setIsPosted={setIsPosted} />
-          </div>
-        )}
+        {user && <CommentsForm setIsPosted={setIsPosted} />}
       </CommentWrapper>
     );
   }
@@ -74,7 +66,7 @@ const Comments = ({ numberOfPages, currentPage, comments }) => {
 const CommentWrapper = styled.div`
   .comment {
     display: grid;
-    border: 1px solid ${theme.colors.grey5};
+    border: 1px solid ${({ theme }) => theme.border};
     grid-template-columns: auto 1fr auto;
     margin-block: 0.5rem;
     padding: 0.5rem;
@@ -84,7 +76,7 @@ const CommentWrapper = styled.div`
     .comment-photo {
       svg {
         font-size: 2rem;
-        color: ${theme.colors.grey5};
+        color: ${({ theme }) => theme.icon};
       }
     }
 
@@ -115,7 +107,7 @@ const CommentWrapper = styled.div`
       border: none;
       svg {
         color: red;
-        font-size: 1rem;
+        font-size: 1.5rem;
         cursor: pointer;
         transition: all 0.5s;
         &:hover {

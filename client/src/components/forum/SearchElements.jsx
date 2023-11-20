@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-import { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { styled } from 'styled-components';
 import { theme } from '../../theme';
@@ -7,7 +6,6 @@ import { Form, useSubmit } from 'react-router-dom';
 
 const SearchElements = ({ categories, params }) => {
   const submit = useSubmit();
-
   return (
     <Searchwrapper>
       <Form>
@@ -60,9 +58,8 @@ const Searchwrapper = styled.article`
     height: 40px;
     margin: 0 auto;
     border-radius: 40px;
-    background: ${theme.colors.grey2};
-    transition: all 0.3s ease;
     margin-bottom: 1rem;
+    cursor: pointer;
 
     input {
       border: none;
@@ -71,7 +68,7 @@ const Searchwrapper = styled.article`
       padding-inline: 1rem;
       font-size: 1rem;
       outline: none;
-      background: ${theme.colors.grey2};
+      cursor: pointer;
     }
 
     label {
@@ -91,21 +88,14 @@ const Searchwrapper = styled.article`
       padding: 1rem;
       border-top-right-radius: 20px;
       border-bottom-right-radius: 20px;
-      background: ${theme.colors.grey2};
       cursor: pointer;
       svg {
         font-size: 1rem;
-        color: ${theme.colors.grey5};
       }
     }
   }
   .filter {
-    label {
-    }
-
     select {
-      background: ${theme.colors.grey2};
-      border: none;
       padding: 0.2rem;
       border-radius: 4px;
       outline: none;

@@ -30,18 +30,20 @@ const Pagination = ({ currentPage, numberOfPages }) => {
         <button onClick={handlePreviousPage}>Précédent</button>
       )}
 
-      <ul className="list">
-        {Array.from({ length: numberOfPages }, (_, index) => (
-          <li key={index}>
-            <button
-              onClick={() => handlePageChange(index + 1)}
-              disabled={index + 1 === currentPage}
-            >
-              {index + 1}
-            </button>
-          </li>
-        ))}
-      </ul>
+      {numberOfPages > 1 && (
+        <ul className="list">
+          {Array.from({ length: numberOfPages }, (_, index) => (
+            <li key={index}>
+              <button
+                onClick={() => handlePageChange(index + 1)}
+                disabled={index + 1 === currentPage}
+              >
+                {index + 1}
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
 
       {currentPage < numberOfPages && (
         <button onClick={handleNextPage}>Suivant</button>
@@ -67,11 +69,11 @@ const Paginate = styled.div`
     text-transform: capitalize;
     padding: 0.5rem 1rem;
     border-radius: 0.25rem;
-    border: none;
-    border: 1px solid ${theme.colors.grey3};
-    background: ${theme.colors.grey2};
+
+    border: 1px solid ${({ theme }) => theme.border};
+    background: ${({ theme }) => theme.background};
     transition: background 0.3s ease, color 0.2s ease;
-    color: ${theme.colors.grey10};
+    color: ${({ theme }) => theme.text};
     cursor: pointer;
 
     &:hover {

@@ -39,7 +39,7 @@ export const loader = async ({ params }) => {
         Authorization: `Bearer ${token}`,
       },
     });
-    imageValue = article.image;
+    imageValue = article?.image;
     return { article };
   } catch (error) {
     console.log(error?.response?.data?.msg);
@@ -120,6 +120,15 @@ const EditArticles = () => {
             <label htmlFor="message"></label>
             <JoditEditor name="message" config={config} value={message} />
           </div>
+          {imageValue && (
+            <div className="image">
+              <img
+                src={article?.image}
+                alt="image de l'article"
+                style={{ width: '100%' }}
+              />
+            </div>
+          )}
           <div className="form-row-image">
             <label htmlFor="image" className="form-label">
               <h3>Ajouter une image</h3>
@@ -132,7 +141,11 @@ const EditArticles = () => {
               onChange={handleChange}
             />
           </div>
-          <SubmitButton type="submit" disabled={isSubmitting || isUpload}>
+          <SubmitButton
+            type="submit"
+            className="btn-primary"
+            disabled={isSubmitting || isUpload}
+          >
             Modifier
           </SubmitButton>
         </StyledForm>
@@ -154,13 +167,8 @@ const StyledForm = styled(Form)`
   gap: 1rem;
   margin-top: 1rem;
   margin-inline: auto;
-
   max-width: ${theme.width.maxWidth};
-
   padding: 1rem;
-  border-radius: 8px;
-
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 
   h2 {
     text-align: center;
@@ -170,10 +178,17 @@ const StyledForm = styled(Form)`
     display: flex;
     flex-direction: column;
     margin-bottom: 1rem;
-    p {
-      color: black;
+  }
+
+  .image {
+    text-align: center;
+    img {
+      width: 80vw;
+      max-width: 600px;
+      height: auto;
     }
   }
+
   .form-row-image {
     text-align: center;
     display: grid;
@@ -190,17 +205,14 @@ const StyledForm = styled(Form)`
 `;
 
 const SubmitButton = styled.button`
-  background-color: ${theme.colors.primary3};
-  color: ${theme.colors.black};
-  color: #fff;
   border: none;
   border-radius: 4px;
   padding: 0.5rem 1rem;
   font-size: 1rem;
   cursor: pointer;
   &:hover {
-    background-color: ${theme.colors.black};
-    color: ${theme.colors.white};
+    background: ${theme.colors.primary3};
+    color: ${theme.colors.grey10};
   }
 
   &:disabled {

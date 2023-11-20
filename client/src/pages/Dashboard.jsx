@@ -77,7 +77,7 @@ const Dashboard = () => {
             <p>{user.jobs}</p>
           </div>
           <div className="user-disconnection" onClick={disconnect}>
-            <RiDoorClosedLine className="disconnect-svg" />
+            <RiDoorClosedLine className="icon" />
             <p>déconnexion</p>
           </div>
         </div>
@@ -140,7 +140,6 @@ const Main = styled.main`
 
 const Header = styled.header`
   padding: 1rem;
-  background: ${theme.colors.grey6};
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
 
   .user {
@@ -149,7 +148,6 @@ const Header = styled.header`
     align-items: center;
     gap: 1rem;
     p {
-      color: white;
       text-transform: capitalize;
       font-size: 1rem;
     }
@@ -166,10 +164,9 @@ const Header = styled.header`
     .user-disconnection {
       text-align: center;
       font-size: 2rem;
-      color: #fff;
       cursor: pointer;
-      transition: transform 0.3s ease-in-out;
-      .disconnect-svg:hover {
+      .icon:hover {
+        transition: transform 0.3s ease-in-out;
         transform: scale(1.2);
       }
     }
@@ -177,7 +174,6 @@ const Header = styled.header`
 
   .icon {
     font-size: 2rem;
-    color: #fff;
   }
 
   .user-info {
@@ -211,19 +207,10 @@ const SearchWrapper = styled.div`
     justify-content: center;
     max-width: 350px;
     height: 40px;
-    margin-top: 1rem;
+    margin-block: 2rem;
     margin-inline: auto;
     border-radius: 40px;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    background: ${theme.colors.grey2};
-    transition: all 0.3s ease;
-    margin-bottom: 1rem;
-
-    input {
-      font-size: 1rem;
-      outline: none;
-      background: ${theme.colors.grey2};
-    }
+    cursor: pointer;
 
     label {
       position: absolute;
@@ -236,9 +223,12 @@ const SearchWrapper = styled.div`
 
     input {
       border: none;
+      outline: none;
+      font-size: 1rem;
       width: 100%;
       border-radius: 40px;
       padding-inline: 1rem;
+      cursor: pointer;
     }
 
     button {
@@ -249,11 +239,9 @@ const SearchWrapper = styled.div`
       padding: 1rem;
       border-top-right-radius: 20px;
       border-bottom-right-radius: 20px;
-      background: ${theme.colors.grey2};
       cursor: pointer;
       svg {
         font-size: 1rem;
-        color: ${theme.colors.grey5};
       }
     }
   }
