@@ -16,7 +16,7 @@ const SingleArticle = ({ article }) => {
     month: 'numeric',
   }).format(timeServer);
 
-  const newTitle = `${title.substr(0, 30)}...`;
+  const newTitle = title.substr(0, 30);
   const shortMessage = `${message.substr(0, 100)}...`;
 
   const defaultOptions = {
@@ -87,7 +87,8 @@ const SingleArticle = ({ article }) => {
 };
 
 const Card = styled.div`
-  width: 20rem;
+  width: 100%;
+  max-width: 22rem;
   border-radius: 0.5rem;
   height: 100%;
   box-shadow: rgba(123, 123, 123, 0.25) 0px 2px 8px 2px;
@@ -126,6 +127,7 @@ const Card = styled.div`
     .article-message {
       p {
         font-size: 0.8rem;
+        overflow-wrap: break-word;
       }
     }
   }

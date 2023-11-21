@@ -32,7 +32,7 @@ export const darkTheme = {
   label: theme.colors.grey1,
   text: theme.colors.grey2,
   nav: theme.colors.grey12,
-  border: theme.colors.grey8,
+  border: theme.colors.grey10,
   icon: theme.colors.grey1,
   background: theme.colors.grey10,
   primaryBackground: theme.colors.primary11,

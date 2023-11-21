@@ -34,7 +34,7 @@ const colors = {
   grey9: '#8D8D8D',
   grey10: '#8D8D8D',
   grey11: '#646464',
-  grey12: '#202020',
+  grey12: '#454545',
 };
 
 const width = {

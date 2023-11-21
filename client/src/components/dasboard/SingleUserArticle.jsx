@@ -90,7 +90,8 @@ const Article = styled.article`
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 
   .card {
-    width: 20rem;
+    width: 100%;
+    max-width: 22rem;
     border-radius: 0.5rem;
     height: 100%;
     box-shadow: rgba(123, 123, 123, 0.25) 0px 2px 8px 2px;
@@ -130,6 +131,7 @@ const Article = styled.article`
       .article-message {
         p {
           font-size: 0.8rem;
+          overflow-wrap: break-word;
         }
       }
     }
